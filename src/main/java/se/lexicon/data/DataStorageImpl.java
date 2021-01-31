@@ -48,7 +48,7 @@ public class DataStorageImpl implements DataStorage {
         Person foundPerson = null;
         for (Person person : personList) {
             if (filter.test(person)) {
-                foundPerson = new Person(person.getFirstName(), person.getLastName(), person.getBirthDate(), person.getGender());
+                foundPerson = person;
                 break;
             }
         }

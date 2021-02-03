@@ -20,7 +20,7 @@ public class Exercises {
     */
     public static void exercise1(String message) {
         System.out.println(message);
-        List<Person> personList = storage.findMany((p) -> p.getFirstName().equals("Erik"));
+        List<Person> personList = storage.findMany(p -> p.getFirstName().equals("Erik"));
         personList.forEach(System.out::println);
         System.out.println("----------------------");
     }
@@ -30,7 +30,7 @@ public class Exercises {
      */
     public static void exercise2(String message) {
         System.out.println(message);
-        List<Person> personList = storage.findMany((p) -> p.getGender().equals(Gender.FEMALE));
+        List<Person> personList = storage.findMany(p -> p.getGender().equals(Gender.FEMALE));
         personList.forEach(System.out::println);
         System.out.println("----------------------");
     }
@@ -40,7 +40,7 @@ public class Exercises {
      */
     public static void exercise3(String message) {
         System.out.println(message);
-        List<Person> personList = storage.findMany((p) -> p.getBirthDate().isAfter(LocalDate.of(2000, 1, 1)) ||
+        List<Person> personList = storage.findMany(p -> p.getBirthDate().isAfter(LocalDate.of(2000, 1, 1)) ||
                 p.getBirthDate().isEqual(LocalDate.of(2000, 1, 1)));
         personList.forEach(System.out::println);
         System.out.println("----------------------");
@@ -51,7 +51,7 @@ public class Exercises {
      */
     public static void exercise4(String message) {
         System.out.println(message);
-        Person person = storage.findOne((p) -> p.getId() == 123);
+        Person person = storage.findOne(p -> p.getId() == 123);
         System.out.println(person);
         System.out.println("----------------------");
 
@@ -63,8 +63,8 @@ public class Exercises {
      */
     public static void exercise5(String message){
         System.out.println(message);
-        String person = storage.findOneAndMapToString((p) -> p.getId() == 456,
-                (p) -> "Name: " + p.getFirstName() + " " + p.getLastName() + " born " + p.getBirthDate());
+        String person = storage.findOneAndMapToString(p -> p.getId() == 456,
+                p -> "Name: " + p.getFirstName() + " " + p.getLastName() + " born " + p.getBirthDate());
         System.out.println(person);
         System.out.println("----------------------");
     }
@@ -74,7 +74,7 @@ public class Exercises {
      */
     public static void exercise6(String message) {
         System.out.println(message);
-        List<String> personList = storage.findManyAndMapEachToString((p) -> p.getFirstName().startsWith("E")
+        List<String> personList = storage.findManyAndMapEachToString(p -> p.getFirstName().startsWith("E")
                 && p.getGender().equals(Gender.MALE),
                 (p) -> p.toString());
         personList.forEach(System.out::println);
@@ -88,8 +88,8 @@ public class Exercises {
     public static void exercise7(String message) {
         System.out.println(message);
         List<String> personList = storage.findManyAndMapEachToString(
-                (p) -> Period.between(p.getBirthDate(), LocalDate.now()).getYears() < 10,
-                (p) -> p.getFirstName() + " " + p.getLastName() + " " + Period.between(p.getBirthDate(), LocalDate.now()).getYears() + " years");
+                p -> Period.between(p.getBirthDate(), LocalDate.now()).getYears() < 10,
+                p -> p.getFirstName() + " " + p.getLastName() + " " + Period.between(p.getBirthDate(), LocalDate.now()).getYears() + " years");
         personList.forEach(System.out::println);
         System.out.println("----------------------");
     }
@@ -99,7 +99,7 @@ public class Exercises {
      */
     public static void exercise8(String message) {
         System.out.println(message);
-        storage.findAndDo((p) -> p.getFirstName().equals("Ulf"), (p) -> System.out.println(p));
+        storage.findAndDo(p -> p.getFirstName().equals("Ulf"), p -> System.out.println(p));
         System.out.println("----------------------");
     }
 
@@ -108,7 +108,7 @@ public class Exercises {
      */
     public static void exercise9(String message) {
         System.out.println(message);
-        storage.findAndDo((p) -> p.getLastName().contains(p.getFirstName()), (p) -> System.out.println(p));
+        storage.findAndDo(p -> p.getLastName().contains(p.getFirstName()), p -> System.out.println(p));
         System.out.println("----------------------");
     }
 
@@ -117,8 +117,8 @@ public class Exercises {
      */
     public static void exercise10(String message) {
         System.out.println(message);
-        storage.findAndDo((p) -> p.getFirstName().equalsIgnoreCase(String.valueOf(new StringBuilder().append(p.getFirstName()).reverse())),
-                (p) -> System.out.println(p));
+        storage.findAndDo(p -> p.getFirstName().equalsIgnoreCase(String.valueOf(new StringBuilder().append(p.getFirstName()).reverse())),
+                p -> System.out.println(p));
         System.out.println("----------------------");
     }
 
@@ -127,7 +127,7 @@ public class Exercises {
      */
     public static void exercise11(String message) {
         System.out.println(message);
-        List<Person> personList = storage.findAndSort((p) -> p.getFirstName().startsWith("A"),
+        List<Person> personList = storage.findAndSort(p -> p.getFirstName().startsWith("A"),
                 Comparator.comparing(Person::getBirthDate));
         personList.forEach(System.out::println);
         System.out.println("----------------------");
@@ -138,7 +138,7 @@ public class Exercises {
      */
     public static void exercise12(String message) {
         System.out.println(message);
-        List<Person> personList = storage.findAndSort((p) -> p.getBirthDate().isBefore(LocalDate.of(1950, 1, 1)),
+        List<Person> personList = storage.findAndSort(p -> p.getBirthDate().isBefore(LocalDate.of(1950, 1, 1)),
                 Comparator.comparing(Person::getBirthDate).reversed());
         personList.forEach(System.out::println);
         System.out.println("----------------------");

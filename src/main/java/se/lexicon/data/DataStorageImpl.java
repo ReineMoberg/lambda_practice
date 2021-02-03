@@ -35,8 +35,8 @@ public class DataStorageImpl implements DataStorage {
     @Override
     public List<Person> findMany(Predicate<Person> filter) {
         List<Person> result = new ArrayList<>();
-        for(Person person : personList){
-            if(filter.test(person)){
+        for (Person person : personList) {
+            if (filter.test(person)) {
                 result.add(person);
             }
         }
@@ -57,54 +57,43 @@ public class DataStorageImpl implements DataStorage {
 
     @Override
     public String findOneAndMapToString(Predicate<Person> filter, Function<Person, String> personToString) {
-        String foundPerson = null;
-        for (Person person : personList) {
-            if (filter.test(person)) {
-                foundPerson = personToString.apply(person);
-                break;
-            }
+        Person foundPerson = findOne(filter);
+        if (foundPerson != null) {
+            return personToString.apply(foundPerson);
         }
-        return foundPerson;
+        return null;
     }
 
     @Override
     public List<String> findManyAndMapEachToString(Predicate<Person> filter, Function<Person, String> personToString) {
-        List<String> foundPersons = new ArrayList<>();
-        for (Person person : personList) {
-            if (filter.test(person)) {
-                foundPersons.add(personToString.apply(person));
-            }
+        List<Person> personListFilter = findMany(filter);
+        List<String> stringList = new ArrayList<>();
+        for (Person person : personListFilter) {
+            String convertedResult = personToString.apply(person);
+            stringList.add(convertedResult);
         }
-        return foundPersons;
+        return stringList;
     }
 
     @Override
     public void findAndDo(Predicate<Person> filter, Consumer<Person> consumer){
-        for (Person person : personList){
-            if (filter.test(person)){
-                consumer.accept(person);
-            }
+        List<Person> find = findMany(filter);
+        for (Person person : find) {
+            consumer.accept(person);
         }
     }
 
     @Override
     public List<Person> findAndSort(Comparator<Person> comparator) {
-        List<Person> foundPersons = new ArrayList<>(personList);
-        foundPersons.sort(comparator);
-        return foundPersons;
+        List<Person> copy = new ArrayList<>(personList);
+        Collections.sort(copy, comparator);
+        return copy;
     }
 
     @Override
     public List<Person> findAndSort(Predicate<Person> filter, Comparator<Person> comparator) {
-        List<Person> foundPersons = new ArrayList<>();
-        for (Person person : personList) {
-            if (filter.test(person)) {
-                foundPersons.add(person);
-            }
-        }
-        if (foundPersons.size() >= 2) {
-            foundPersons.sort(comparator);
-        }
-        return foundPersons;
+        List<Person> personList = findMany(filter);
+        personList.sort(comparator);
+        return personList;
     }
 }

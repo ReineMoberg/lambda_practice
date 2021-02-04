@@ -11,7 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5bfc121c-d789-421e-92f7-719a5b00516f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/se/lexicon/Exercises.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/se/lexicon/Exercises.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/se/lexicon/data/DataStorageImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/se/lexicon/data/DataStorageImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +37,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
@@ -79,7 +79,13 @@
       <option name="presentableId" value="LOCAL−00002" />
       <updated>1612343300803</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL−00003" summary="Implemented Exercises">
+      <created>1612344724220</created>
+      <option name="number" value="LOCAL−00003" />
+      <option name="presentableId" value="LOCAL−00003" />
+      <updated>1612344724220</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="UnloadedModulesList">
@@ -89,6 +95,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Implemented and checked exercises in Exercises class&#10;&#10;Some changes in DataStorageImpl class&#10;&#10;Couldn't run project initially. Error message that App (main method) could not be found. Could not find any errors in file paths or class paths. Unloaded module in main/java and test/java. Set module in root directory to use JDK 1.8." />
     <MESSAGE value="Implemented new code in DataStorageImpl" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented new code in DataStorageImpl" />
+    <MESSAGE value="Implemented Exercises" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented Exercises" />
   </component>
 </project>

@@ -62,6 +62,15 @@ public class DataStorageImpl implements DataStorage {
             return personToString.apply(foundPerson);
         }
         return null;
+
+        /*String foundPerson = null;
+        for (Person person : personList) {
+            if (filter.test(person)) {
+                foundPerson = personToString.apply(person);
+                break;
+            }
+        }
+        return foundPerson;*/
     }
 
     @Override
@@ -73,6 +82,14 @@ public class DataStorageImpl implements DataStorage {
             stringList.add(convertedResult);
         }
         return stringList;
+
+        /*List<String> foundPersons = new ArrayList<>();
+        for (Person person : personList) {
+            if (filter.test(person)) {
+                foundPersons.add(personToString.apply(person));
+            }
+        }
+        return foundPersons;*/
     }
 
     @Override
@@ -81,6 +98,12 @@ public class DataStorageImpl implements DataStorage {
         for (Person person : find) {
             consumer.accept(person);
         }
+
+        /*for (Person person : personList){
+            if (filter.test(person)){
+                consumer.accept(person);
+            }
+        }*/
     }
 
     @Override
@@ -88,12 +111,28 @@ public class DataStorageImpl implements DataStorage {
         List<Person> copy = new ArrayList<>(personList);
         Collections.sort(copy, comparator);
         return copy;
+
+        /*List<Person> foundPersons = new ArrayList<>(personList);
+        foundPersons.sort(comparator);
+        return foundPersons;*/
     }
+
 
     @Override
     public List<Person> findAndSort(Predicate<Person> filter, Comparator<Person> comparator) {
         List<Person> personList = findMany(filter);
         personList.sort(comparator);
         return personList;
+
+        /*List<Person> foundPersons = new ArrayList<>();
+        for (Person person : personList) {
+            if (filter.test(person)) {
+                foundPersons.add(person);
+            }
+        }
+        if (foundPersons.size() >= 2) {
+            foundPersons.sort(comparator);
+        }
+        return foundPersons;*/
     }
 }
